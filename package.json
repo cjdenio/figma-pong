@@ -1,0 +1,15 @@
+{
+  "name": "Pong",
+  "version": "1.0.0",
+  "description": "Your Figma plugin",
+  "main": "code.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "author": "",
+  "license": "",
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.19.2",
+    "typescript": "^4.2.3"
+  }
+}

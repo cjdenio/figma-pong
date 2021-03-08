@@ -1,0 +1,23 @@
+<button id="cool">Start!</button>
+<button id="cancel">Cancel</button>
+
+<script>
+  document.getElementById("cancel").onclick = () => {
+    parent.postMessage({ pluginMessage: { type: "cancel" } }, "*");
+  };
+
+  document.getElementById("cool").onclick = () => {
+    parent.postMessage({ pluginMessage: { type: "cool" } }, "*");
+  };
+
+  window.onkeydown = (e) => {
+    switch (e.keyCode) {
+      case 40:
+        parent.postMessage({ pluginMessage: { type: "up" } }, "*");
+        break;
+      case 38:
+        parent.postMessage({ pluginMessage: { type: "down" } }, "*");
+        break;
+    }
+  };
+</script>
