@@ -37,3 +37,10 @@ export function areBoundsTouching(a: Bounds, b: Bounds): boolean {
 
   return true;
 }
+
+export function calculateBallTrajectory(theta: number, xCoord: number): number {
+  const rad = degToRad(theta);
+  const tan = Math.tan(rad);
+
+  return tan * xCoord;
+}
