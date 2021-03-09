@@ -31,7 +31,7 @@ const pong: {
 pong.frame.appendChild(pong.userPaddle);
 pong.frame.appendChild(pong.ball);
 
-let angle = 120;
+let angle = 100 + Math.floor(Math.random() * 30);
 
 setInterval(() => {
   const [x, y] = calculateOffset(angle, 10);
@@ -39,8 +39,14 @@ setInterval(() => {
   pong.ball.x += x;
   pong.ball.y += y;
 
-  if (pong.ball.x < 0 || pong.ball.x > pong.frame.width - pong.ball.width) {
-    angle += 180;
+  if (pong.ball.x < 0) {
+    angle = -angle;
+  }
+
+  if (pong.ball.x > pong.frame.width - pong.ball.width) {
+    angle = -angle;
+    // figma.notify("You lost :(");
+    // figma.closePlugin();
   }
 
   // Bottom edge
@@ -48,7 +54,11 @@ setInterval(() => {
     pong.ball.y > pong.frame.height - pong.ball.height &&
     (angle < -90 || angle > 90)
   ) {
-    angle = -angle;
+    angle = 180 - angle;
+  }
+
+  if (pong.ball.y < 0 && (angle < 90 || angle > -90)) {
+    angle = 180 - angle;
   }
 }, 50);
 
