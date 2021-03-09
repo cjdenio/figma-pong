@@ -1,4 +1,4 @@
-import { calculateOffset } from "./util";
+import { areBoundsTouching, calculateOffset, getBounds } from "./util";
 
 // This shows the HTML page in "ui.html".
 figma.showUI(__html__);
@@ -44,9 +44,8 @@ setInterval(() => {
   }
 
   if (pong.ball.x > pong.frame.width - pong.ball.width) {
-    angle = -angle;
-    // figma.notify("You lost :(");
-    // figma.closePlugin();
+    figma.notify("You lost :(");
+    figma.closePlugin();
   }
 
   // Bottom edge
@@ -59,6 +58,10 @@ setInterval(() => {
 
   if (pong.ball.y < 0 && (angle < 90 || angle > -90)) {
     angle = 180 - angle;
+  }
+
+  if (areBoundsTouching(getBounds(pong.ball), getBounds(pong.userPaddle))) {
+    angle = -angle;
   }
 }, 50);
 

@@ -27,9 +27,13 @@ export function getBounds(node: EllipseNode | RectangleNode): Bounds {
 }
 
 export function areBoundsTouching(a: Bounds, b: Bounds): boolean {
-  if (a[0][0] < b[0][1] && a[0][0] > b[0][0]) {
-    return true;
+  if (a[1][0] < b[0][0] || a[0][0] > b[1][0]) {
+    return false;
   }
 
-  return false;
+  if (a[1][1] < b[0][1] || a[0][1] > b[1][1]) {
+    return false;
+  }
+
+  return true;
 }
