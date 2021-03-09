@@ -2,6 +2,6 @@
   "name": "Pong",
   "id": "950871409613899955",
   "api": "1.0.0",
-  "main": "code.js",
+  "main": "dist/main.js",
   "ui": "ui.html"
 }

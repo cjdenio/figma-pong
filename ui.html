@@ -1,21 +1,18 @@
-<button id="cool">Start!</button>
-<button id="cancel">Cancel</button>
+<button id="start">Start!</button>
+
+<p>Use the up/down arrows to move the paddle (this popup must be focused)</p>
 
 <script>
-  document.getElementById("cancel").onclick = () => {
-    parent.postMessage({ pluginMessage: { type: "cancel" } }, "*");
-  };
-
-  document.getElementById("cool").onclick = () => {
-    parent.postMessage({ pluginMessage: { type: "cool" } }, "*");
+  document.getElementById("start").onclick = () => {
+    parent.postMessage({ pluginMessage: { type: "start" } }, "*");
   };
 
   window.onkeydown = (e) => {
     switch (e.keyCode) {
-      case 40:
+      case 38:
         parent.postMessage({ pluginMessage: { type: "up" } }, "*");
         break;
-      case 38:
+      case 40:
         parent.postMessage({ pluginMessage: { type: "down" } }, "*");
         break;
     }
